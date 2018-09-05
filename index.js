@@ -1,8 +1,5 @@
 'use strict';
 
-const t1 = "2006-01-02T15:04:05.999999999Z07:00";
-
-
 const fromRfc3339NanoToTimestamp = (string) => {
     const stReg = /(\d\d\d\d)(-)?(\d\d)(-)?(\d\d)(T)?(\d\d)(:)?(\d\d)?(:)?(\d\d)?([\.,]\d+)?($|Z|([+-])(\d\d)(:)?(\d\d)?)/i;
     const nsReg = /(^[^\.]*)(\.\d*)(Z.*$)/;
