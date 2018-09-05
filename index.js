@@ -9,8 +9,8 @@ const fromRfc3339NanoToTimestamp = (string) => {
     let dt = new Date(string.replace(nsReg, '$1$3')
                             .replace(/Z\-/i, '-')
                             .replace(/Z\+/i, '+')
-                            .replace(/Z/i, '+')
-                            .replace(/\+$/, 'Z'));
+                            .replace(/Z/i,   '+')
+                            .replace(/\+$/,  'Z'));
     let ns = string.replace(nsReg, '$2');
     return !dt || dt.toString() === 'Invalid Date' || !ns || ns === string
         || (ns = ns.replace(/^\./, '').padEnd(9, '0')).length !== 9
