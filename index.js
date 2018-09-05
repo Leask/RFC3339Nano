@@ -32,4 +32,3 @@ module.exports = {
     fromRfc3339NanoToTimestamp,
     fromTimestampToRfc3339Nano,
 };
-
