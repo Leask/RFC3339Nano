@@ -1,5 +1,7 @@
 'use strict';
 
+const mathjs = require('mathjs');
+
 const fromRfc3339NanoToTimestamp = (string) => {
     const stReg = /(\d\d\d\d)(-)?(\d\d)(-)?(\d\d)(T)?(\d\d)(:)?(\d\d)?(:)?(\d\d)?([\.,]\d+)?($|Z|([+-])(\d\d)(:)?(\d\d)?)/i;
     const nsReg = /(^[^\.]*)(\.\d*)(Z.*$)/;
@@ -28,7 +30,18 @@ const fromTimestampToRfc3339Nano = (timestamp) => {
     return new Date(parseInt(ts + '000')).toISOString().replace('.000', `.${ns}`);
 };
 
+const adjustRfc3339ByNano = (string, nano) => {
+    let ts = fromRfc3339NanoToTimestamp(string);
+    if (!ts || !(ts = mathjs.bignumber(ts))) {
+        return null;
+    }
+    return fromTimestampToRfc3339Nano(mathjs.format(
+        mathjs.add(ts, nano || 0), {notation : 'fixed'}
+    ));
+};
+
 module.exports = {
     fromRfc3339NanoToTimestamp,
     fromTimestampToRfc3339Nano,
+    adjustRfc3339ByNano,
 };

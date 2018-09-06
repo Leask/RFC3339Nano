@@ -9,5 +9,6 @@ const testCases = {
 
 for (let i in testCases) {
     console.log(rfc3339nano.fromRfc3339NanoToTimestamp(i),
-                rfc3339nano.fromTimestampToRfc3339Nano(testCases[i]));
+                rfc3339nano.fromTimestampToRfc3339Nano(testCases[i]),
+                rfc3339nano.adjustRfc3339ByNano(i, 1));
 }
