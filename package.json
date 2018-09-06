@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Leask/RFC3339Nano/issues"
   },
-  "homepage": "https://github.com/Leask/RFC3339Nano#readme"
+  "homepage": "https://github.com/Leask/RFC3339Nano#readme",
+  "dependencies": {
+    "mathjs": "^5.1.1"
+  }
 }
