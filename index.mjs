@@ -21,8 +21,7 @@ const fromTimestampToRfc3339Nano = (timestamp) => {
     const nsReg = /(\d*)(\d{9})/;
     const ts = String(timestamp).replace(nsReg, '$1');
     const ns = String(timestamp).replace(nsReg, '$2');
-    if (!timestamp || parseInt(timestamp) < 999999999
-        || !parseInt(ts) || !parseInt(ns)) {
+    if (!timestamp || parseInt(timestamp) < 999999999 || !ts.length || !ns.length) {
         return null;
     }
     return new Date(parseInt(ts + '000')).toISOString().replace('.000', `.${ns}`);
